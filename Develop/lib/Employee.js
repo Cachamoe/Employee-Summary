@@ -4,22 +4,23 @@ class Employee {
         this.name = name;
         this.id = id;
         this.email = email;
+        this.role = "employee";
     }
     getName() {
-        
+        return `Employee Name: ${this.name}`
     }
 
     getId() {
-
+        return `Employee Id: ${this.id}`
     }
 
     getEmail() {
-
+        return `Employee Email: ${this.email}`
     }
 
     getRole() {
-
-    }   = employee
+        return `Employee Role: ${this.role}`
+    } 
 }
 
 module.exports = Employee;
