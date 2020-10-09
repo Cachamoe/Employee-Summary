@@ -50,7 +50,7 @@ function promptUser() {
                         question: "What is the manager's office number?"
                     },
                 ])
-                const manager = new manager(answers.choices[0]).push(employees);
+                let manager = new manager(answers.choices[0]).push(employees);
             }
             else if (answers.choices === 1) {
                 inquirer.prompt([
@@ -75,7 +75,7 @@ function promptUser() {
                         question: "What is the engineer's github username?"
                     },
                 ])
-                const engineer = new engineer(answers.choices[1]).push(employees);
+                let engineer = new engineer(answers.choices[1]).push(employees);
             }
             else if (answers.choices === 2) {
                 inquirer.prompt([
@@ -100,9 +100,8 @@ function promptUser() {
                         question: "What is the intern's school?"
                     },
                 ])
-                const intern = new intern(answers.choices[2]).push(employees);
+                let intern = new intern(answers.choices[2]).push(employees);
             }
-
         }).catch(error => {
             if (error) {
                 console.log("Error");
