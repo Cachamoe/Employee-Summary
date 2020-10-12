@@ -13,7 +13,7 @@ This is a application that generates a webpage that displays a team's basic info
 
 
 ## Programs 
-HTML, CSS, Javascript, Node.js, json, Terminal
+HTML, CSS, Javascript, Node.js, JSON, Terminal
 
 ## Author/s
 Caleb Chaney
