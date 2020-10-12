@@ -4,7 +4,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
+let employees = [];
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -19,88 +19,106 @@ function promptUser() {
             {
                 type: "list",
                 name: "employeeType",
-                message: "What is the employee type?",
+                message: "Please select one of the following",
                 choices: [
-                    Manager,
-                    Engineer,
-                    Intern,
+                    "Manager",
+                    "Engineer",
+                    "Intern",
+                    "Exit"
                 ]
             },
         ]).then(answers => {
-            if (answers.choices === 0) {
+            console.log(answers);
+            if (answers.employeeType === "Manager") {
                 inquirer.prompt([
                     {
                         type: "input",
                         name: "name",
-                        question: "What is the manager's name?"
+                        message: "What is the manager's name?"
                     },
                     {
                         type: "input",
                         name: "id",
-                        question: "What is the manager's id?"
+                        message: "What is the manager's id?"
                     },
                     {
                         type: "input",
                         name: "email",
-                        question: "What is the manager's email?"
+                        message: "What is the manager's email?"
                     },
                     {
                         type: "input",
                         name: "officeNumber",
-                        question: "What is the manager's office number?"
+                        message: "What is the manager's office number?"
                     },
-                ])
-                let manager = new manager(answers.choices[0]).push(employees);
+                ]).then(function(answers) {
+                    let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber) 
+                    employees.push(manager);
+                    promptUser();
+                })
             }
-            else if (answers.choices === 1) {
+            else if (answers.employeeType === "Engineer") {
                 inquirer.prompt([
                     {
                         type: "input",
                         name: "name",
-                        question: "What is the engineer's name?"
+                        message: "What is the engineer's name?"
                     },
                     {
                         type: "input",
                         name: "id",
-                        question: "What is the engineer's id?"
+                        message: "What is the engineer's id?"
                     },
                     {
                         type: "input",
                         name: "email",
-                        question: "What is the engineer's email?"
+                        message: "What is the engineer's email?"
                     },
                     {
                         type: "input",
                         name: "github",
-                        question: "What is the engineer's github username?"
+                        message: "What is the engineer's github username?"
                     },
-                ])
-                let engineer = new engineer(answers.choices[1]).push(employees);
+                ]).then(function(answers) {
+                    let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github) 
+                    employees.push(engineer);
+                    promptUser();
+                })
             }
-            else if (answers.choices === 2) {
+            else if (answers.employeeType === "Intern") {
                 inquirer.prompt([
                     {
                         type: "input",
                         name: "name",
-                        question: "What is the intern's name?"
+                        message: "What is the intern's name?"
                     },
                     {
                         type: "input",
                         name: "id",
-                        question: "What is the intern's id?"
+                        message: "What is the intern's id?"
                     },
                     {
                         type: "input",
                         name: "email",
-                        question: "What is the intern's email?"
+                        message: "What is the intern's email?"
                     },
                     {
                         type: "input",
                         name: "school",
-                        question: "What is the intern's school?"
+                        message: "What is the intern's school?"
                     },
-                ])
-                let intern = new intern(answers.choices[2]).push(employees);
+                ]).then(function(answers) {
+                    let intern = new Intern(answers.name, answers.id, answers.email, answers.school) 
+                    employees.push(intern);
+                    promptUser();
+                })
+            }
+            else {
+                const content = render(employees)
+                fs.writeFile(outputPath, content, function(err) {
+                    if (err) throw err
+                    console.log("Success")
+                })
             }
         }).catch(error => {
             if (error) {
@@ -112,9 +130,8 @@ function promptUser() {
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
+ 
 
-render();
-let employees = [];
 
 
 // After you have your html, you're now ready to create an HTML file using the HTML
