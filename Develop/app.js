@@ -51,8 +51,8 @@ function promptUser() {
                         name: "officeNumber",
                         message: "What is the manager's office number?"
                     },
-                ]).then(function(answers) {
-                    let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber) 
+                ]).then(function (answers) {
+                    let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
                     employees.push(manager);
                     promptUser();
                 })
@@ -79,8 +79,8 @@ function promptUser() {
                         name: "github",
                         message: "What is the engineer's github username?"
                     },
-                ]).then(function(answers) {
-                    let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github) 
+                ]).then(function (answers) {
+                    let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
                     employees.push(engineer);
                     promptUser();
                 })
@@ -107,15 +107,15 @@ function promptUser() {
                         name: "school",
                         message: "What is the intern's school?"
                     },
-                ]).then(function(answers) {
-                    let intern = new Intern(answers.name, answers.id, answers.email, answers.school) 
+                ]).then(function (answers) {
+                    let intern = new Intern(answers.name, answers.id, answers.email, answers.school)
                     employees.push(intern);
                     promptUser();
                 })
             }
             else {
                 const content = render(employees)
-                fs.writeFile(outputPath, content, function(err) {
+                fs.writeFile(outputPath, content, function (err) {
                     if (err) throw err
                     console.log("Success")
                 })
@@ -124,13 +124,12 @@ function promptUser() {
             if (error) {
                 console.log("Error");
             }
-        })      
+        })
 };
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
- 
 
 
 
