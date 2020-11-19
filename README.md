@@ -15,5 +15,8 @@ Here's a link to the demonstration video: [https://drive.google.com/file/d/1em0T
 ## Programs 
 HTML, Javascript, Bootstrap, Node.js, JSON, Font Awesome, Terminal
 
+## License 
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+
 ## Author/s
 Caleb Chaney
