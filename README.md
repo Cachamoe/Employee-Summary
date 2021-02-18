@@ -12,7 +12,7 @@ Here's a link to the demonstration video: [https://drive.google.com/file/d/1em0T
 2) Renders an html file with employees bios added
 
 
-## Programs 
+## Technologies 
 HTML, Javascript, Bootstrap, Node.js, JSON, Font Awesome, Terminal
 
 ## License 
